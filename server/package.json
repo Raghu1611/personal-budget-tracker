@@ -1,0 +1,13 @@
+{
+  "name": "budget-tracker-server",
+  "version": "1.0.0",
+  "description": "Backend API for Personal Budget Tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["budget", "tracker", "mern", "express", "mongodb"],
+  "author": "Raghu",
+  "license": "MIT"
+}
