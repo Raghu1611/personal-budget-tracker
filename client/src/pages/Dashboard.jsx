@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SummaryCards from '../components/SummaryCards';
 import MonthPicker from '../components/MonthPicker';
 import TransactionList from '../components/TransactionList';
@@ -6,6 +7,7 @@ import { IncomeExpenseChart, CategoryPieChart } from '../components/Charts';
 import { getTransactions, getSummary } from '../services/api';
 
 const Dashboard = ({ refreshTrigger }) => {
+  const navigate = useNavigate();
   const now = new Date();
   const [month, setMonth] = useState(now.getMonth() + 1);
   const [year, setYear] = useState(now.getFullYear());
@@ -44,6 +46,8 @@ const Dashboard = ({ refreshTrigger }) => {
     setYear(newYear);
   };
 
+  const handleEdit = (transaction) => navigate('/transactions?edit=' + transaction._id);
+
   return (
     <div>
       <div className="page-header">
@@ -67,7 +71,7 @@ const Dashboard = ({ refreshTrigger }) => {
 
       <TransactionList
         transactions={recentTransactions}
-        onEdit={() => {}}
+        onEdit={handleEdit}
         onDelete={() => {}}
         loading={loading}
       />

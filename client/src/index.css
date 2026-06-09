@@ -1032,3 +1032,68 @@ input, select, textarea {
     width: calc(100vw - 32px);
   }
 }
+
+/* ================================
+   DANGER BUTTON (Task 7.1)
+   ================================ */
+.btn-danger {
+  background: var(--expense-color);
+  color: white;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #e04040;
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Modal action button row */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* ================================
+   TYPE FILTER (Task 7.2)
+   ================================ */
+.type-filter {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.type-filter-btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.type-filter-btn:hover {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
+.type-filter-btn.active {
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .type-filter {
+    flex-wrap: wrap;
+  }
+}

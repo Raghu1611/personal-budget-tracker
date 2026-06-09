@@ -4,7 +4,7 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) web application for ind
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)
-![React](https://img.shields.io/badge/react-18-blue.svg)
+![React](https://img.shields.io/badge/react-19-blue.svg)
 
 ---
 
@@ -26,10 +26,10 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) web application for ind
 
 | Layer          | Technology                          |
 | -------------- | ----------------------------------- |
-| **Frontend**   | React 18, Vite, React Router v6    |
+| **Frontend**   | React 19, Vite, react-router-dom v7 |
 | **Charts**     | Chart.js + react-chartjs-2         |
 | **Styling**    | Vanilla CSS (custom design system) |
-| **Backend**    | Node.js, Express.js                |
+| **Backend**    | Node.js, Express 5                 |
 | **Database**   | MongoDB (Mongoose ODM)             |
 | **HTTP Client**| Axios                              |
 | **Icons**      | react-icons (Heroicons)            |
@@ -45,12 +45,14 @@ personal-budget-tracker/
 │   ├── src/
 │   │   ├── components/        # Reusable UI components
 │   │   │   ├── Charts.jsx     # Bar and Pie chart components
+│   │   │   ├── ConfirmModal.jsx
 │   │   │   ├── MonthPicker.jsx
 │   │   │   ├── Sidebar.jsx
 │   │   │   ├── SummaryCards.jsx
 │   │   │   ├── Toast.jsx
 │   │   │   ├── TransactionForm.jsx
-│   │   │   └── TransactionList.jsx
+│   │   │   ├── TransactionList.jsx
+│   │   │   └── TypeFilter.jsx
 │   │   ├── pages/             # Page-level components
 │   │   │   ├── AddTransaction.jsx
 │   │   │   ├── Dashboard.jsx
@@ -122,15 +124,20 @@ npm run dev
 
 The app will open at `http://localhost:3000`.
 
-### 4. Using MongoDB Atlas (Optional)
+### 4. Set Up MongoDB Atlas
 
-If you don't have a local MongoDB instance, you can use [MongoDB Atlas](https://www.mongodb.com/atlas):
+BudgetPal uses [MongoDB Atlas](https://www.mongodb.com/atlas) as its database. Follow these steps to get your connection string:
 
-1. Create a free cluster on Atlas
-2. Get your connection string
-3. Update `MONGO_URI` in `server/.env`:
+1. **Create a free cluster** – Sign in to Atlas, click **Build a Database**, choose the free **M0** tier, pick a cloud region, and click **Create**.
+2. **Whitelist your IP** – In the **Network Access** tab, click **Add IP Address** and choose **Allow Access from Anywhere** (or add your specific IP for tighter security).
+3. **Create a database user** – In the **Database Access** tab, click **Add New Database User**, choose **Password** authentication, and save the username and password you set.
+4. **Copy the connection URI** – From the **Database** tab, click **Connect → Drivers**, select **Node.js**, and copy the connection string. It will look like:
    ```
-   MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/budget-tracker
+   mongodb+srv://<username>:<password>@<cluster>.mongodb.net/budget-tracker
+   ```
+5. **Paste into `server/.env`** – Open `server/.env` and set `MONGO_URI` to your copied string, replacing `<username>`, `<password>`, and `<cluster>` with your actual values:
+   ```
+   MONGO_URI=mongodb+srv://myuser:mypassword@mycluster.mongodb.net/budget-tracker
    ```
 
 ---
