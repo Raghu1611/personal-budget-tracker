@@ -143,11 +143,14 @@ The app will open at `http://localhost:3000`.
 
 ##  Screenshots
 
-> ![alt text](image.png)
+<img src="image.png" width="100%" alt="Dashboard" />
+<br />
+<img src="image-1.png" width="100%" alt="Transactions" />
+<br />
+<img src="image-2.png" width="100%" alt="Add Transaction" />
+<br />
+<img src="image-3.png" width="100%" alt="Summary" />
 
----![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
 ##  Design Highlights
 
 - **Dark Theme** with carefully chosen color palette (purple-cyan accents)
