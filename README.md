@@ -153,16 +153,10 @@ The app will open at `http://localhost:3000`.
 
 ---
 
-##  License
+Screenshots
+<img width="1909" height="1036" alt="image" src="https://github.com/user-attachments/assets/a434347b-5348-4f5d-86cc-7eec05359259" />
+<img width="1914" height="912" alt="image" src="https://github.com/user-attachments/assets/12e178c4-2706-4c37-906a-5155b12e9488" />
+<img width="1919" height="962" alt="image" src="https://github.com/user-attachments/assets/0b70b740-bf78-4d21-8c48-5f3d95aa8920" />
+<img width="1919" height="979" alt="image" src="https://github.com/user-attachments/assets/81baa994-f73c-4018-a080-e6644b56ee97" />
 
-This project is licensed under the MIT License.
 
----
-
-##  Author
-
-**Raghu** – [GitHub](https://github.com/Raghu1611)
-
----
-
-> Built as part of the **Azentrix Digital Services Summer Internship Program 2026**.
