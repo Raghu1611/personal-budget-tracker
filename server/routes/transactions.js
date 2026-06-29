@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Transaction = require('../models/Transaction');
+const { Transaction } = require('../models/Transaction');
+const { Op } = require('sequelize');
 
 // GET /api/transactions - Get all transactions (with optional filters)
 router.get('/', async (req, res) => {
@@ -12,11 +13,11 @@ router.get('/', async (req, res) => {
     if (month && year) {
       const startDate = new Date(year, month - 1, 1);
       const endDate = new Date(year, month, 0, 23, 59, 59);
-      filter.date = { $gte: startDate, $lte: endDate };
+      filter.date = { [Op.between]: [startDate, endDate] };
     } else if (year) {
       const startDate = new Date(year, 0, 1);
       const endDate = new Date(year, 11, 31, 23, 59, 59);
-      filter.date = { $gte: startDate, $lte: endDate };
+      filter.date = { [Op.between]: [startDate, endDate] };
     }
 
     // Filter by type (income/expense)
@@ -24,7 +25,10 @@ router.get('/', async (req, res) => {
       filter.type = type;
     }
 
-    const transactions = await Transaction.find(filter).sort({ date: -1 });
+    const transactions = await Transaction.findAll({
+      where: filter,
+      order: [['date', 'DESC']]
+    });
     res.json(transactions);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching transactions', error: error.message });
@@ -40,10 +44,10 @@ router.get('/summary', async (req, res) => {
     if (month && year) {
       const startDate = new Date(year, month - 1, 1);
       const endDate = new Date(year, month, 0, 23, 59, 59);
-      filter.date = { $gte: startDate, $lte: endDate };
+      filter.date = { [Op.between]: [startDate, endDate] };
     }
 
-    const transactions = await Transaction.find(filter);
+    const transactions = await Transaction.findAll({ where: filter });
 
     const totalIncome = transactions
       .filter(t => t.type === 'income')
@@ -82,7 +86,7 @@ router.get('/summary', async (req, res) => {
 // GET /api/transactions/:id - Get single transaction
 router.get('/:id', async (req, res) => {
   try {
-    const transaction = await Transaction.findById(req.params.id);
+    const transaction = await Transaction.findByPk(req.params.id);
     if (!transaction) {
       return res.status(404).json({ message: 'Transaction not found' });
     }
@@ -110,16 +114,15 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Amount must be greater than 0' });
     }
 
-    const transaction = new Transaction({
+    const transaction = await Transaction.create({
       type,
       amount,
       category,
       description: description || '',
-      date: date || Date.now()
+      date: date || new Date()
     });
 
-    const savedTransaction = await transaction.save();
-    res.status(201).json(savedTransaction);
+    res.status(201).json(transaction);
   } catch (error) {
     res.status(400).json({ message: 'Error creating transaction', error: error.message });
   }
@@ -140,17 +143,14 @@ router.put('/:id', async (req, res) => {
       return res.status(400).json({ message: 'Amount must be greater than 0' });
     }
 
-    const updatedTransaction = await Transaction.findByIdAndUpdate(
-      req.params.id,
-      { type, amount, category, description, date },
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedTransaction) {
+    const transaction = await Transaction.findByPk(req.params.id);
+    if (!transaction) {
       return res.status(404).json({ message: 'Transaction not found' });
     }
 
-    res.json(updatedTransaction);
+    await transaction.update({ type, amount, category, description, date });
+
+    res.json(transaction);
   } catch (error) {
     res.status(400).json({ message: 'Error updating transaction', error: error.message });
   }
@@ -159,13 +159,14 @@ router.put('/:id', async (req, res) => {
 // DELETE /api/transactions/:id - Delete transaction
 router.delete('/:id', async (req, res) => {
   try {
-    const deletedTransaction = await Transaction.findByIdAndDelete(req.params.id);
+    const transaction = await Transaction.findByPk(req.params.id);
 
-    if (!deletedTransaction) {
+    if (!transaction) {
       return res.status(404).json({ message: 'Transaction not found' });
     }
 
-    res.json({ message: 'Transaction deleted successfully', transaction: deletedTransaction });
+    await transaction.destroy();
+    res.json({ message: 'Transaction deleted successfully', transaction });
   } catch (error) {
     res.status(500).json({ message: 'Error deleting transaction', error: error.message });
   }

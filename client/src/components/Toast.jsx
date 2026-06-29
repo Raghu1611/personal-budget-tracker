@@ -10,7 +10,7 @@ const Toast = ({ message, type = 'success', onClose }) => {
 
   return (
     <div className={`toast ${type}`}>
-      <span>{type === 'success' ? '✅' : '❌'}</span>
+      <span>{type === 'success' ? '' : ''}</span>
       <span>{message}</span>
     </div>
   );

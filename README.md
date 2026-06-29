@@ -1,28 +1,24 @@
-# 💸 BudgetPal – Personal Budget Tracker
+#  BudgetPal – Personal Budget Tracker
 
 A full-stack **MERN** (MongoDB, Express, React, Node.js) web application for individuals and small businesses to track daily income & expenses, visualize spending patterns with interactive charts, and manage personal finances effortlessly.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)
-![React](https://img.shields.io/badge/react-19-blue.svg)
+---
+
+##  Features
+
+- ** Dashboard** – Monthly overview with income, expenses, and net balance summary cards
+- ** Interactive Charts** – Bar chart (income vs expenses) and Pie chart (category breakdown) powered by Chart.js
+- ** Add Transactions** – Quick entry form with type toggle (income/expense), category picker, and date selection
+- **️ Edit & Delete** – Full CRUD operations on all transactions
+- **️ Month Navigation** – Browse through months to view historical data
+- ** Fully Responsive** – Works seamlessly on mobile, tablet, and desktop
+- ** Premium Dark UI** – Modern dark theme with glassmorphism, gradients, and smooth animations
+- ** Toast Notifications** – Real-time feedback for all actions
+- **️ Smart Categories** – Pre-defined income and expense categories with emoji icons
 
 ---
 
-## ✨ Features
-
-- **📊 Dashboard** – Monthly overview with income, expenses, and net balance summary cards
-- **📈 Interactive Charts** – Bar chart (income vs expenses) and Pie chart (category breakdown) powered by Chart.js
-- **➕ Add Transactions** – Quick entry form with type toggle (income/expense), category picker, and date selection
-- **✏️ Edit & Delete** – Full CRUD operations on all transactions
-- **🗓️ Month Navigation** – Browse through months to view historical data
-- **📱 Fully Responsive** – Works seamlessly on mobile, tablet, and desktop
-- **🌙 Premium Dark UI** – Modern dark theme with glassmorphism, gradients, and smooth animations
-- **🔔 Toast Notifications** – Real-time feedback for all actions
-- **🏷️ Smart Categories** – Pre-defined income and expense categories with emoji icons
-
----
-
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer          | Technology                          |
 | -------------- | ----------------------------------- |
@@ -30,13 +26,13 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) web application for ind
 | **Charts**     | Chart.js + react-chartjs-2         |
 | **Styling**    | Vanilla CSS (custom design system) |
 | **Backend**    | Node.js, Express 5                 |
-| **Database**   | MongoDB (Mongoose ODM)             |
+| **Database**   | SQLite (Sequelize ORM)             |
 | **HTTP Client**| Axios                              |
 | **Icons**      | react-icons (Heroicons)            |
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 personal-budget-tracker/
@@ -69,7 +65,7 @@ personal-budget-tracker/
 │   └── package.json
 ├── server/                    # Express backend
 │   ├── models/
-│   │   └── Transaction.js     # Mongoose model
+│   │   └── Transaction.js     # Sequelize model
 │   ├── routes/
 │   │   └── transactions.js    # CRUD API routes
 │   ├── server.js              # Express app entry
@@ -81,12 +77,11 @@ personal-budget-tracker/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
 - **Node.js** >= 18.x
-- **MongoDB** (local instance or [MongoDB Atlas](https://www.mongodb.com/atlas))
 - **npm** or **yarn**
 
 ### 1. Clone the Repository
@@ -104,7 +99,7 @@ npm install
 
 # Create environment file
 cp .env.example .env
-# Edit .env with your MongoDB URI if needed
+# Edit .env if needed
 
 # Start the backend server
 npm run dev
@@ -124,25 +119,9 @@ npm run dev
 
 The app will open at `http://localhost:3000`.
 
-### 4. Set Up MongoDB Atlas
-
-BudgetPal uses [MongoDB Atlas](https://www.mongodb.com/atlas) as its database. Follow these steps to get your connection string:
-
-1. **Create a free cluster** – Sign in to Atlas, click **Build a Database**, choose the free **M0** tier, pick a cloud region, and click **Create**.
-2. **Whitelist your IP** – In the **Network Access** tab, click **Add IP Address** and choose **Allow Access from Anywhere** (or add your specific IP for tighter security).
-3. **Create a database user** – In the **Database Access** tab, click **Add New Database User**, choose **Password** authentication, and save the username and password you set.
-4. **Copy the connection URI** – From the **Database** tab, click **Connect → Drivers**, select **Node.js**, and copy the connection string. It will look like:
-   ```
-   mongodb+srv://<username>:<password>@<cluster>.mongodb.net/budget-tracker
-   ```
-5. **Paste into `server/.env`** – Open `server/.env` and set `MONGO_URI` to your copied string, replacing `<username>`, `<password>`, and `<cluster>` with your actual values:
-   ```
-   MONGO_URI=mongodb+srv://myuser:mypassword@mycluster.mongodb.net/budget-tracker
-   ```
-
 ---
 
-## 📡 API Endpoints
+##  API Endpoints
 
 | Method   | Endpoint                    | Description                              |
 | -------- | --------------------------- | ---------------------------------------- |
@@ -162,13 +141,14 @@ BudgetPal uses [MongoDB Atlas](https://www.mongodb.com/atlas) as its database. F
 
 ---
 
-## 📷 Screenshots
+##  Screenshots
 
-> Add screenshots of your running application here.
+> ![alt text](image.png)
 
----
-
-## 🎨 Design Highlights
+---![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+##  Design Highlights
 
 - **Dark Theme** with carefully chosen color palette (purple-cyan accents)
 - **Glassmorphism** effects with subtle backdrop blurs
@@ -179,13 +159,13 @@ BudgetPal uses [MongoDB Atlas](https://www.mongodb.com/atlas) as its database. F
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👤 Author
+##  Author
 
 **Raghu** – [GitHub](https://github.com/Raghu1611)
 

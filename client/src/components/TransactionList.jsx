@@ -16,7 +16,7 @@ const TransactionList = ({ transactions, onEdit, onDelete, loading }) => {
     return (
       <div className="transactions-card">
         <div className="empty-state">
-          <div className="empty-icon">📭</div>
+          <div className="empty-icon"></div>
           <h4>No transactions yet</h4>
           <p>Start by adding your first income or expense entry.</p>
         </div>
@@ -27,7 +27,7 @@ const TransactionList = ({ transactions, onEdit, onDelete, loading }) => {
   return (
     <div className="transactions-card">
       <div className="transactions-header">
-        <h3>📋 Recent Transactions</h3>
+        <h3> Recent Transactions</h3>
         <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
           {transactions.length} {transactions.length === 1 ? 'entry' : 'entries'}
         </span>

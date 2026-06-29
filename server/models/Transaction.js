@@ -1,37 +1,49 @@
-const mongoose = require('mongoose');
+const { Sequelize, DataTypes } = require('sequelize');
+const path = require('path');
 
-const transactionSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    enum: ['income', 'expense'],
-    required: [true, 'Transaction type is required']
-  },
-  amount: {
-    type: Number,
-    required: [true, 'Amount is required'],
-    min: [0.01, 'Amount must be greater than 0']
-  },
-  category: {
-    type: String,
-    required: [true, 'Category is required'],
-    trim: true
-  },
-  description: {
-    type: String,
-    trim: true,
-    default: ''
-  },
-  date: {
-    type: Date,
-    required: [true, 'Date is required'],
-    default: Date.now
-  }
-}, {
-  timestamps: true
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: path.join(__dirname, '..', 'database.sqlite'),
+  logging: false
 });
 
-// Index for faster queries by date and type
-transactionSchema.index({ date: -1 });
-transactionSchema.index({ type: 1, date: -1 });
+const Transaction = sequelize.define('Transaction', {
+  type: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      isIn: [['income', 'expense']]
+    }
+  },
+  amount: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+    validate: {
+      min: 0.01
+    }
+  },
+  category: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.STRING,
+    defaultValue: ''
+  },
+  date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  }
+}, {
+  timestamps: true,
+});
 
-module.exports = mongoose.model('Transaction', transactionSchema);
+// Override toJSON to map id to _id for frontend compatibility
+Transaction.prototype.toJSON = function () {
+  const values = Object.assign({}, this.get());
+  values._id = values.id;
+  return values;
+};
+
+module.exports = { sequelize, Transaction };

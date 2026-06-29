@@ -81,7 +81,7 @@ const TransactionForm = ({ onSubmit, editingTransaction, onCancel }) => {
   return (
     <div className="form-card fade-in">
       <h3>
-        {editingTransaction ? '✏️ Edit Transaction' : '➕ Add Transaction'}
+        {editingTransaction ? ' Edit Transaction' : ' Add Transaction'}
       </h3>
       <form onSubmit={handleSubmit}>
         <div className="form-grid">

@@ -24,7 +24,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       />
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-logo">
-          <h1>💸 BudgetPal</h1>
+          <h1> BudgetPal</h1>
           <p>Personal Finance Tracker</p>
         </div>
 

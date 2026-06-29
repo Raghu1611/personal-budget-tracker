@@ -90,7 +90,7 @@ export const IncomeExpenseChart = ({ income, expenses }) => {
 
   return (
     <div className="chart-card fade-in">
-      <h3>📊 Income vs Expenses</h3>
+      <h3> Income vs Expenses</h3>
       <div className="chart-container">
         {income === 0 && expenses === 0 ? (
           <div className="empty-state" style={{ padding: '40px 0' }}>
@@ -112,7 +112,7 @@ export const CategoryPieChart = ({ categoryBreakdown }) => {
   if (categories.length === 0) {
     return (
       <div className="chart-card fade-in" style={{ animationDelay: '100ms' }}>
-        <h3>🍩 Expense by Category</h3>
+        <h3> Expense by Category</h3>
         <div className="chart-container">
           <div className="empty-state" style={{ padding: '40px 0' }}>
             <p>No expense data to display</p>
@@ -175,7 +175,7 @@ export const CategoryPieChart = ({ categoryBreakdown }) => {
 
   return (
     <div className="chart-card fade-in" style={{ animationDelay: '100ms' }}>
-      <h3>🍩 Expense by Category</h3>
+      <h3> Expense by Category</h3>
       <div className="chart-container">
         <Pie data={data} options={options} />
       </div>
