@@ -141,15 +141,6 @@ The app will open at `http://localhost:3000`.
 
 ---
 
-##  Screenshots
-
-<img src="image.png" width="100%" alt="Dashboard" />
-<br />
-<img src="image-1.png" width="100%" alt="Transactions" />
-<br />
-<img src="image-2.png" width="100%" alt="Add Transaction" />
-<br />
-<img src="image-3.png" width="100%" alt="Summary" />
 
 ##  Design Highlights
 
