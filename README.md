@@ -1,6 +1,6 @@
 #  BudgetPal – Personal Budget Tracker
 
-A full-stack **MERN** (MongoDB, Express, React, Node.js) web application for individuals and small businesses to track daily income & expenses, visualize spending patterns with interactive charts, and manage personal finances effortlessly.
+A full-stack web application built with **SQLite, Express, React, and Node.js** for individuals and small businesses to track daily income & expenses, visualize spending patterns with interactive charts, and manage personal finances effortlessly.
 
 ---
 
